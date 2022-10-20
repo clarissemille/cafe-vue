@@ -1,7 +1,32 @@
 <script>
 export default {
 	name: "MenuItem",
-	props: ["addToShoppingCart", "image", "inStock", "name", "price", "quantity"],
+	props: {
+		addToShoppingCart: {
+			type: Function,
+			required: true
+		},
+		image: {
+			type: Object,
+			required: true
+		},
+		inStock: {
+			type: Boolean,
+			required: true
+		},
+		name: {
+			type: String,
+			required: true
+		},
+		price: {
+			type: Number,
+			required: true
+		},
+		quantity: {
+			type: Number,
+			defaut: 1
+		}
+	},
 	data() {
 		return {
 			onSale: false
@@ -30,7 +55,10 @@ export default {
 		<img class="menu-item__image" :src="image.source" :alt="image.alt" />
 		<div>
 			<h3>{{ name }}</h3>
-			<p>Prix : {{ generatedPrice }}</p>
+			<p>
+				Prix : {{ generatedPrice }}
+				<span v-if="onSale">(10% de réduction !)</span>
+			</p>
 			<p v-if="inStock">En stock</p>
 			<p v-else>En rupture de stock</p>
 			<div>
@@ -44,4 +72,14 @@ export default {
 	</div>
 </template>
 
-<style></style>
+<style lang="scss">
+.menu-item {
+	display: flex;
+	width: 500px;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	&__image {
+		max-width: 300px;
+	}
+}
+</style>
