@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -7,7 +7,30 @@
     </div>
     <router-view />
   </div>
+</template> -->
+
+
+<template>
+  <div id="app">
+      <img src="./assets/logo.png" alt="">
+      <HelloWorld />
+      <p>{{ day }}/{{ month }}/{{ year }}</p>
+  </div>
 </template>
+
+<script>
+import HelloWorld from '@/components/HelloWorld.vue';
+import {mapState} from "vuex"
+
+export default {
+  components: {
+    HelloWorld,
+  },
+  computed: {
+    ...mapState(['date', 'month', 'year'])
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
