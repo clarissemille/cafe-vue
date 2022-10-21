@@ -1,8 +1,6 @@
 <template>
 	<div class="hello">
-        <p>
-            {{ $store.state.day }}/{{$store.state.month}}/{{$store.state.year}}
-        </p>
+        <p>{{$store.getters.formattedDate}}</p>
 		<h1>{{ title }}</h1>
 		<CounterComponent />
 	</div>

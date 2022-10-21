@@ -14,22 +14,27 @@
   <div id="app">
       <img src="./assets/logo.png" alt="">
       <HelloWorld />
-      <p>{{ day }}/{{ month }}/{{ year }}</p>
+      <p>{{ formattedDate }}</p>
+      <button @click="incrementDay">Incrémenter</button>
   </div>
 </template>
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue';
-import {mapState} from "vuex"
+import {mapGetters, mapActions} from "vuex"
 
 export default {
   components: {
     HelloWorld,
   },
   computed: {
-    ...mapState(['date', 'month', 'year'])
+    ...mapGetters(["formattedDate"])
+  },
+  methods: {
+      ...mapActions(['incrementMonth'])
+    }
   }
-}
+
 </script>
 
 <style lang="scss">
